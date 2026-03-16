@@ -154,3 +154,25 @@ Dispatches `/command` messages to handler modules:
 - **Transport-level throttling** — prevents API rate limits
 - **Non-blocking Git** — commit failures don't block output delivery
 - **Graceful shutdown** — SIGTERM kills all running OpenCode processes
+
+## Performance Targets
+
+| Metric | Target |
+|--------|--------|
+| Base memory | No more than 200 MB |
+| Per active session | +100 MB per running OpenCode process |
+| Task timeout | Configurable, default 10 minutes (`TASK_TIMEOUT_MS`) |
+| Telegram send rate | Max 1 edit/send per 2 s per chat |
+| WhatsApp send rate | Max 1 message per 3 s per chat |
+
+## Roadmap (Out of Scope for v1.2)
+
+Future extensions under consideration:
+
+- **Web dashboard** — session monitoring and project file browsing
+- **Voice message transcription** — Telegram/WhatsApp voice &rarr; Whisper &rarr; text &rarr; OpenCode
+- **OpenCode library/API integration** — replace CLI subprocess if/when a programmatic API becomes available
+- **PR auto-creation** — auto-open pull/merge requests on remote after push
+- **Image/screenshot OCR** — extract text from screenshots and feed to OpenCode
+- **Scheduled tasks** — cron-like recurring OpenCode invocations
+- **Session export** — zip an entire project directory and send as a chat file attachment

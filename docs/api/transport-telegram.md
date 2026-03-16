@@ -88,6 +88,8 @@ The adapter converts Telegram messages to `IncomingMessage`:
 
 Outgoing messages are throttled to a minimum of **2 seconds** between sends per chat ID. This prevents Telegram API rate limit errors (HTTP 429).
 
+If a 429 response is received despite throttling, the adapter applies **exponential backoff with jitter** and queues pending messages until the rate limit window resets.
+
 ## File Downloads
 
 Files are downloaded via the Telegram Bot API file URL:
