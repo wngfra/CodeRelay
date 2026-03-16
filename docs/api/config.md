@@ -32,7 +32,7 @@ interface AppConfig {
 function loadConfig(): AppConfig
 ```
 
-Loads environment variables and returns a typed `AppConfig` object. Calls `dotenv.config()` on first invocation. Subsequent calls return the cached result.
+Loads environment variables and returns a typed `AppConfig` object. `dotenv.config()` is called at module import time (when `src/config.ts` is first imported). `loadConfig()` itself reads from `process.env` and caches the result. Subsequent calls return the cached object.
 
 **Throws** if required variables (`TELEGRAM_BOT_TOKEN`, `ALLOWED_CHAT_IDS`, `MASTER_KEY`) are missing.
 

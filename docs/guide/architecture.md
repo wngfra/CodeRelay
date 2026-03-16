@@ -130,7 +130,7 @@ Dispatches `/command` messages to handler modules:
 
 - Parses command name and arguments (handles `@botname` suffix)
 - Checks admin permissions for restricted commands in groups
-- 5 command modules: project, model, session, git, file
+- 19 commands across 5 modules: project, model, session, git, file
 
 ## Data Flow: Task Execution
 

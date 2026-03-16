@@ -105,7 +105,7 @@ Truncates text and appends `[truncated — full output in project directory]` if
 
 **File:** `src/formatter/whatsapp.ts`
 
-Same function signatures as the Telegram formatter, but outputs WhatsApp-compatible formatting:
+Exports a subset of the Telegram formatter's functions, adapted for WhatsApp-compatible formatting. Notably missing `escapeMarkdownV2` (not needed) and `formatDiff` (not implemented for WhatsApp).
 
 - Bold: `*text*`
 - Code: triple backticks
@@ -122,7 +122,7 @@ Same function signatures as the Telegram formatter, but outputs WhatsApp-compati
 
 ### Functions
 
-The WhatsApp formatter exports all the same functions except `escapeMarkdownV2` (not needed):
+The WhatsApp formatter exports these functions (`escapeMarkdownV2` and `formatDiff` are Telegram-only):
 
 - `formatStageTransition(stage)` — same emoji, WhatsApp bold
 - `formatCodeBlock(code)` — no language parameter

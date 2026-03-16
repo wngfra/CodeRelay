@@ -20,7 +20,8 @@ Complete reference for every exported class, function, interface, and type in Co
 | [Crypto Keystore](/api/crypto) | `src/crypto/keystore.ts` | `encrypt()`, `decrypt()`, `storeApiKey()`, `getApiKey()`, `listProviders()`, `maskKey()` |
 | [Git Manager](/api/git) | `src/git/manager.ts` | `deriveBranchName()`, `GitManager` |
 | [File Handler](/api/files) | `src/files/handler.ts` | `sanitizeFilename()`, `deduplicateFilename()`, `SaveResult`, `FileHandler` |
-| [Formatters](/api/formatters) | `src/formatter/*.ts` | `escapeMarkdownV2()`, `formatStageTransition()`, `formatCodeBlock()`, `formatError()`, `formatDiff()`, `formatTaskSummary()`, `formatOutputBatch()`, `truncateWithNotice()` |
+| [Formatters](/api/formatters) | `src/formatter/telegram.ts` | `escapeMarkdownV2()`, `formatStageTransition()`, `formatCodeBlock()`, `formatError()`, `formatDiff()`, `formatTaskSummary()`, `formatOutputBatch()`, `truncateWithNotice()` |
+| | `src/formatter/whatsapp.ts` | `formatStageTransition()`, `formatCodeBlock()`, `formatError()`, `formatTaskSummary()`, `formatOutputBatch()`, `truncateWithNotice()` |
 | [Command Router](/api/command-router) | `src/commands/index.ts` | `CommandContext`, `CommandRouter` |
 | [Command Modules](/api/command-modules) | `src/commands/*.ts` | `ProjectCommands`, `ModelCommands`, `SessionCommands`, `GitCommands`, `FileCommands` |
 

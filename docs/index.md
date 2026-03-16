@@ -34,6 +34,6 @@ features:
     details: Shared project per group chat with user attribution, task queue, and admin-restricted commands.
   - title: File Uploads
     details: Upload images, documents, or code files. Reference them in prompts for context-aware coding.
-  - title: 20 Bot Commands
+  - title: 19 Bot Commands
     details: Full command set for projects, models, git branches, files, and session management.
 ---

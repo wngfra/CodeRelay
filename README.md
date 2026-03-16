@@ -47,7 +47,7 @@ CodeRelay ──► OpenCode CLI ──► Agent Pipeline
 | **Security** | Encrypted keys | AES-256-GCM at rest. `/apikey` messages auto-deleted on Telegram |
 | **Collaboration** | Multi-user groups | Shared project per group, user attribution, admin-restricted commands |
 | **Files** | Upload support | Images, docs, archives saved with dedup naming + path traversal protection |
-| **Commands** | 20 bot commands | Projects, models, git, files, session management |
+| **Commands** | 19 bot commands | Projects, models, git, files, session management |
 | **Queue** | Sequential tasks | One process per session, requests queued with position notifications |
 | **Deploy** | Docker-ready | Dockerfile + docker-compose.yml included |
 
@@ -108,13 +108,20 @@ All config via `.env`. See [`.env.example`](.env.example) or the [Configuration 
 | `OPENCODE_BIN` | | `opencode` |
 | `TASK_TIMEOUT_MS` | | `600000` |
 | `DEFAULT_MODEL` | | `claude-sonnet-4-20250514` |
+| `LOG_LEVEL` | | `info` |
 | `GIT_REMOTE_URL` | | &mdash; |
+| `GIT_USER_NAME` | | `CodeRelay` |
+| `GIT_USER_EMAIL` | | `bridge@localhost` |
 | `MAX_UPLOAD_SIZE_MB` | | `50` |
 
 ## Architecture
 
 ```
 src/
+├── index.ts      Orchestrator — wires everything together
+├── config.ts     Environment config loader
+├── logger.ts     Structured logging via pino
+├── utils.ts      Shared utilities (disk space check)
 ├── transport/    Telegram + WhatsApp adapters (TransportAdapter interface)
 ├── session/      Chat → project directory mapping, task queue, persistence
 ├── runner/       OpenCode subprocess, output parser, workflow prompt
@@ -122,8 +129,7 @@ src/
 ├── crypto/       AES-256-GCM API key encryption
 ├── git/          Auto-init, branch, commit, push via simple-git
 ├── files/        Upload save, dedup, path traversal protection
-├── commands/     20 bot commands across 5 modules
-└── index.ts      Orchestrator — wires everything together
+└── commands/     19 bot commands across 5 modules
 ```
 
 Full architecture diagrams and data flow in the [Architecture docs](https://wngfra.github.io/CodeRelay/guide/architecture).
@@ -133,13 +139,13 @@ Full architecture diagrams and data flow in the [Architecture docs](https://wngf
 Comprehensive docs at **[wngfra.github.io/CodeRelay](https://wngfra.github.io/CodeRelay/)**:
 
 - **[Getting Started](https://wngfra.github.io/CodeRelay/guide/getting-started)** &mdash; install, configure, first interaction
-- **[Commands](https://wngfra.github.io/CodeRelay/guide/commands)** &mdash; all 20 commands with examples
+- **[Commands](https://wngfra.github.io/CodeRelay/guide/commands)** &mdash; all 19 commands with examples
 - **[Architecture](https://wngfra.github.io/CodeRelay/guide/architecture)** &mdash; system diagram, data flow, concurrency model
 - **[Security](https://wngfra.github.io/CodeRelay/guide/security)** &mdash; encryption, access control, hardening
 - **[API Reference](https://wngfra.github.io/CodeRelay/api/)** &mdash; every exported class, function, interface, and type
 - **[Contributing](https://wngfra.github.io/CodeRelay/contributing/development)** &mdash; dev setup, adding transports, adding commands, testing
 
-Docs auto-deploy to GitHub Pages on every push to `main`.
+Docs auto-deploy to GitHub Pages on pushes to `main` that change `docs/`.
 
 ## Scripts
 
@@ -148,10 +154,12 @@ Docs auto-deploy to GitHub Pages on every push to `main`.
 | `npm run dev` | Run with tsx (development) |
 | `npm run build` | Compile TypeScript to `dist/` |
 | `npm start` | Run compiled output |
-| `npm test` | Run tests (vitest, 79 tests) |
+| `npm test` | Run tests (vitest) |
+| `npm run test:watch` | Tests in watch mode |
 | `npm run lint` | Type-check without emitting |
 | `npm run docs:dev` | Docs dev server |
 | `npm run docs:build` | Build docs site |
+| `npm run docs:preview` | Preview built docs |
 
 ## Security
 
@@ -172,6 +180,7 @@ See the full [Security guide](https://wngfra.github.io/CodeRelay/guide/security)
 | | grammY | Telegram Bot API |
 | | @whiskeysockets/baileys | WhatsApp Web |
 | | simple-git | Programmatic Git |
+| | Node crypto (AES-256-GCM) | API key encryption |
 | | pino | Structured JSON logging |
 | | vitest | Unit + integration tests |
 | | VitePress | Documentation site |

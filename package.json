@@ -15,6 +15,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=20.0.0"
   },

@@ -11,8 +11,8 @@
 ## Installation
 
 ```bash
-git clone <repo-url> coderelay
-cd coderelay
+git clone https://github.com/wngfra/CodeRelay.git
+cd CodeRelay
 npm install
 ```
 

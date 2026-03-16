@@ -89,12 +89,18 @@ File MIME types are guessed from extension:
 |-----------|----------|
 | `.pdf` | `application/pdf` |
 | `.zip` | `application/zip` |
+| `.tar` | `application/x-tar` |
+| `.gz` | `application/gzip` |
 | `.js` | `text/javascript` |
 | `.ts` | `text/typescript` |
 | `.py` | `text/x-python` |
 | `.json` | `application/json` |
+| `.txt` | `text/plain` |
+| `.md` | `text/markdown` |
 | `.png` | `image/png` |
 | `.jpg`/`.jpeg` | `image/jpeg` |
+| `.gif` | `image/gif` |
+| `.svg` | `image/svg+xml` |
 | _other_ | `application/octet-stream` |
 
 ## Rate Limiting

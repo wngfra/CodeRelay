@@ -3,8 +3,8 @@
 ## Clone and Install
 
 ```bash
-git clone <repo-url> coderelay
-cd coderelay
+git clone https://github.com/wngfra/CodeRelay.git
+cd CodeRelay
 npm install
 ```
 
@@ -48,6 +48,7 @@ coderelay/
 | `npm run lint` | `tsc --noEmit` | Type-check without building |
 | `npm run docs:dev` | `vitepress dev docs` | Documentation dev server |
 | `npm run docs:build` | `vitepress build docs` | Build documentation site |
+| `npm run docs:preview` | `vitepress preview docs` | Preview built docs |
 
 ## Tech Stack
 
@@ -61,6 +62,7 @@ coderelay/
 | Logging | pino |
 | Testing | vitest |
 | Docs | VitePress |
+| Containerization | Docker + docker-compose |
 
 ## Module Dependencies
 
