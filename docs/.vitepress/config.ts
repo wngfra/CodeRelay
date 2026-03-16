@@ -8,10 +8,11 @@ export default defineConfig({
 
   head: [
     ['meta', { name: 'theme-color', content: '#4f46e5' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/CodeRelay/logo.svg' }],
   ],
 
   themeConfig: {
-    logo: undefined,
+    logo: '/logo.svg',
     siteTitle: 'CodeRelay',
 
     nav: [

@@ -5,6 +5,9 @@ hero:
   name: CodeRelay
   text: Chat-to-Code Pipeline
   tagline: Connect Telegram and WhatsApp to OpenCode's multi-agent coding system. Send requests via chat, get real-time streaming feedback.
+  image:
+    src: /logo.svg
+    alt: CodeRelay
   actions:
     - theme: brand
       text: Get Started

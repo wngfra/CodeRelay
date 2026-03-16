@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="logo.svg" alt="CodeRelay" width="160">
+
 # CodeRelay
 
 **Chat-to-code pipeline for Telegram and WhatsApp.**
