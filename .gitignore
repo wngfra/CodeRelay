@@ -1,8 +1,46 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# VitePress build output & cache
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Environment & secrets
 .env
+.env.*
+!.env.example
+
+# Workspaces (runtime data)
 workspaces/
+
+# Logs
 *.log
+logs/
+pids/
+
+# OS files
 .DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# WhatsApp auth state
 .wwebjs_auth/
 .wwebjs_cache/
+
+# TypeScript incremental
+*.tsbuildinfo
+
+# Coverage
+coverage/
+
+# Docker
+.docker/
