@@ -1,0 +1,35 @@
+{
+  "name": "coderelay",
+  "version": "1.2.0",
+  "description": "Telegram + WhatsApp to OpenCode multi-agent coding interface",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.16",
+    "dotenv": "^16.4.7",
+    "grammy": "^1.35.0",
+    "pino": "^9.6.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitepress": "^1.6.4",
+    "vitest": "^3.0.4"
+  }
+}

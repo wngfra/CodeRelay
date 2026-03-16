@@ -1,0 +1,15 @@
+services:
+  coderelay:
+    build: .
+    container_name: coderelay
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - workspaces:/data/workspaces
+    environment:
+      - WORKSPACE_ROOT=/data/workspaces
+      - NODE_ENV=production
+
+volumes:
+  workspaces:
