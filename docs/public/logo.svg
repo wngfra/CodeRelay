@@ -15,7 +15,7 @@
     Two tapered, aerodynamic lens forms crossing at the center.
     Form A sweeps lower, bulges upward.
     Form B sweeps upper, bulges downward.
-    They overlap in the center — the relay nexus.
+    They overlap in the center — the crossing point.
   -->
   <path d="M 40,314 Q 250,172 460,288 Q 250,432 40,314 Z" fill="url(#ra)"/>
   <path d="M 52,198 Q 262,340 472,224 Q 262,80  52,198 Z" fill="url(#rb)"/>
