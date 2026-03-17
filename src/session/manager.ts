@@ -25,8 +25,8 @@ export class SessionManager {
   private config = loadConfig();
 
   constructor() {
-    const bridgeDir = path.join(this.config.workspaceRoot, '.bridge');
-    this.store = new SessionStore(bridgeDir);
+    const nuntiaDir = path.join(this.config.workspaceRoot, '.nuntia');
+    this.store = new SessionStore(nuntiaDir);
   }
 
   /**

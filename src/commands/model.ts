@@ -70,11 +70,11 @@ export class ModelCommands {
     args: string,
   ): Promise<void> {
     const config = loadConfig();
-    const bridgeDir = path.join(config.workspaceRoot, '.bridge');
+    const nuntiaDir = path.join(config.workspaceRoot, '.nuntia');
 
     // Handle /apikey list
     if (args.trim().toLowerCase() === 'list') {
-      const providers = listProviders(bridgeDir);
+      const providers = listProviders(nuntiaDir);
       if (providers.length === 0) {
         await transport.sendMessage({
           chatId: msg.chatId,
@@ -86,7 +86,7 @@ export class ModelCommands {
       }
 
       const list = providers.map((p) => {
-        const key = getApiKey(bridgeDir, p);
+        const key = getApiKey(nuntiaDir, p);
         return `  \`${p}\`: ${key ? maskKey(key) : '****'}`;
       }).join('\n');
 
@@ -114,7 +114,7 @@ export class ModelCommands {
     const [provider, ...keyParts] = parts;
     const apiKey = keyParts.join(' ');
 
-    storeApiKey(bridgeDir, provider, apiKey);
+    storeApiKey(nuntiaDir, provider, apiKey);
 
     // Delete the user's message containing the key (Telegram only)
     if (msg.platform === 'telegram') {

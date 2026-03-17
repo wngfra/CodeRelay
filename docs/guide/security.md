@@ -12,7 +12,7 @@ Keys are encrypted with **AES-256-GCM** before writing to disk:
 - 16-byte authentication tag (tamper detection)
 - Master key from `MASTER_KEY` environment variable (32 bytes / 64 hex chars)
 
-Stored in `<WORKSPACE_ROOT>/.bridge/keystore.json`:
+Stored in `<WORKSPACE_ROOT>/.nuntia/keystore.json`:
 
 ```json
 {

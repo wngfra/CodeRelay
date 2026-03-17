@@ -34,28 +34,28 @@ Decrypts an `EncryptedData` payload back to the original plaintext.
 
 **Throws** if the auth tag doesn't match (tampered data) or the master key is wrong.
 
-### `storeApiKey(bridgeDir, provider, apiKey)`
+### `storeApiKey(nuntiaDir, provider, apiKey)`
 
 ```typescript
-function storeApiKey(bridgeDir: string, provider: string, apiKey: string): void
+function storeApiKey(nuntiaDir: string, provider: string, apiKey: string): void
 ```
 
 Encrypts and persists an API key for a provider. Overwrites any existing key for the same provider.
 
-**Storage:** Writes to `<bridgeDir>/keystore.json`. Creates the directory and file if they don't exist.
+**Storage:** Writes to `<nuntiaDir>/keystore.json`. Creates the directory and file if they don't exist.
 
-### `getApiKey(bridgeDir, provider)`
+### `getApiKey(nuntiaDir, provider)`
 
 ```typescript
-function getApiKey(bridgeDir: string, provider: string): string | null
+function getApiKey(nuntiaDir: string, provider: string): string | null
 ```
 
 Retrieves and decrypts a stored API key. Returns `null` if no key exists for the provider.
 
-### `listProviders(bridgeDir)`
+### `listProviders(nuntiaDir)`
 
 ```typescript
-function listProviders(bridgeDir: string): string[]
+function listProviders(nuntiaDir: string): string[]
 ```
 
 Returns an array of provider names that have stored keys (e.g., `['anthropic', 'openai']`).
@@ -107,17 +107,17 @@ Returns a display-safe masked version of a key:
 ```typescript
 import { storeApiKey, getApiKey, listProviders, maskKey } from './crypto/keystore.js';
 
-const bridgeDir = '/data/workspaces/.bridge';
+const nuntiaDir = '/data/workspaces/.nuntia';
 
 // Store
-storeApiKey(bridgeDir, 'anthropic', 'sk-ant-api03-real-key-here');
+storeApiKey(nuntiaDir, 'anthropic', 'sk-ant-api03-real-key-here');
 
 // Retrieve
-const key = getApiKey(bridgeDir, 'anthropic');
+const key = getApiKey(nuntiaDir, 'anthropic');
 console.log(key);  // 'sk-ant-api03-real-key-here'
 
 // List
-console.log(listProviders(bridgeDir));  // ['anthropic']
+console.log(listProviders(nuntiaDir));  // ['anthropic']
 
 // Mask for display
 console.log(maskKey(key!));  // 'sk-a...here'

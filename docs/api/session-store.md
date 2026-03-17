@@ -23,11 +23,11 @@ interface SessionData {
 
 ```typescript
 class SessionStore {
-  constructor(bridgeDir: string);
+  constructor(nuntiaDir: string);
 }
 ```
 
-On construction, loads `sessions.json` from `bridgeDir`. If the file is corrupted or missing, starts with an empty store.
+On construction, loads `sessions.json` from `nuntiaDir`. If the file is corrupted or missing, starts with an empty store.
 
 **Crash recovery:** On load, all sessions have `taskRunning` reset to `false` and `taskDescription` cleared. This handles the case where the process was killed while a task was running.
 
@@ -100,7 +100,7 @@ Removes a session. Returns `true` if the session existed, `false` otherwise. Per
 
 ## Persistence
 
-The store writes to `<bridgeDir>/sessions.json` on every mutation (create, update, delete). The directory is created if it doesn't exist.
+The store writes to `<nuntiaDir>/sessions.json` on every mutation (create, update, delete). The directory is created if it doesn't exist.
 
 ```json
 {

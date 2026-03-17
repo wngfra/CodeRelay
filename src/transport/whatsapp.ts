@@ -38,7 +38,7 @@ export class WhatsAppAdapter implements TransportAdapter {
 
   constructor() {
     const config = loadConfig();
-    this.authDir = path.join(config.workspaceRoot, '.bridge', 'whatsapp-auth');
+    this.authDir = path.join(config.workspaceRoot, '.nuntia', 'whatsapp-auth');
   }
 
   async start(): Promise<void> {

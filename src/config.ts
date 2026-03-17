@@ -53,7 +53,7 @@ export function loadConfig(): AppConfig {
     logLevel: optionalEnv('LOG_LEVEL', 'info'),
     gitRemoteUrl: optionalEnv('GIT_REMOTE_URL', ''),
     gitUserName: optionalEnv('GIT_USER_NAME', 'Nuntia'),
-    gitUserEmail: optionalEnv('GIT_USER_EMAIL', 'bridge@localhost'),
+    gitUserEmail: optionalEnv('GIT_USER_EMAIL', 'nuntia@localhost'),
     maxUploadSizeMb: parseInt(optionalEnv('MAX_UPLOAD_SIZE_MB', '50'), 10),
   };
 

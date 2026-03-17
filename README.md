@@ -111,7 +111,7 @@ All config via `.env`. See [`.env.example`](.env.example) or the [Configuration 
 | `LOG_LEVEL` | | `info` |
 | `GIT_REMOTE_URL` | | &mdash; |
 | `GIT_USER_NAME` | | `Nuntia` |
-| `GIT_USER_EMAIL` | | `bridge@localhost` |
+| `GIT_USER_EMAIL` | | `nuntia@localhost` |
 | `MAX_UPLOAD_SIZE_MB` | | `50` |
 
 ## Architecture

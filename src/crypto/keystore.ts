@@ -57,45 +57,45 @@ export function decrypt(data: EncryptedData): string {
   return plaintext;
 }
 
-function getKeystorePath(bridgeDir: string): string {
-  return path.join(bridgeDir, 'keystore.json');
+function getKeystorePath(nuntiaDir: string): string {
+  return path.join(nuntiaDir, 'keystore.json');
 }
 
-function readKeyStore(bridgeDir: string): KeyStore {
-  const filePath = getKeystorePath(bridgeDir);
+function readKeyStore(nuntiaDir: string): KeyStore {
+  const filePath = getKeystorePath(nuntiaDir);
   if (!fs.existsSync(filePath)) return {};
   const raw = fs.readFileSync(filePath, 'utf8');
   return JSON.parse(raw) as KeyStore;
 }
 
-function writeKeyStore(bridgeDir: string, store: KeyStore): void {
-  fs.mkdirSync(bridgeDir, { recursive: true });
-  const filePath = getKeystorePath(bridgeDir);
+function writeKeyStore(nuntiaDir: string, store: KeyStore): void {
+  fs.mkdirSync(nuntiaDir, { recursive: true });
+  const filePath = getKeystorePath(nuntiaDir);
   fs.writeFileSync(filePath, JSON.stringify(store, null, 2), 'utf8');
 }
 
 export function storeApiKey(
-  bridgeDir: string,
+  nuntiaDir: string,
   provider: string,
   apiKey: string,
 ): void {
-  const store = readKeyStore(bridgeDir);
+  const store = readKeyStore(nuntiaDir);
   store[provider] = encrypt(apiKey);
-  writeKeyStore(bridgeDir, store);
+  writeKeyStore(nuntiaDir, store);
 }
 
 export function getApiKey(
-  bridgeDir: string,
+  nuntiaDir: string,
   provider: string,
 ): string | null {
-  const store = readKeyStore(bridgeDir);
+  const store = readKeyStore(nuntiaDir);
   const entry = store[provider];
   if (!entry) return null;
   return decrypt(entry);
 }
 
-export function listProviders(bridgeDir: string): string[] {
-  const store = readKeyStore(bridgeDir);
+export function listProviders(nuntiaDir: string): string[] {
+  const store = readKeyStore(nuntiaDir);
   return Object.keys(store);
 }
 

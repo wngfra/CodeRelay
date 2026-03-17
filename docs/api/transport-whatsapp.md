@@ -13,7 +13,7 @@ class WhatsAppAdapter implements TransportAdapter {
 }
 ```
 
-Auth state is stored at `<WORKSPACE_ROOT>/.bridge/whatsapp-auth/`.
+Auth state is stored at `<WORKSPACE_ROOT>/.nuntia/whatsapp-auth/`.
 
 ### Methods
 

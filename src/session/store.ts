@@ -30,8 +30,8 @@ export class SessionStore {
   private sessions: Map<string, SessionData> = new Map();
   private persistPath: string;
 
-  constructor(bridgeDir: string) {
-    this.persistPath = path.join(bridgeDir, 'sessions.json');
+  constructor(nuntiaDir: string) {
+    this.persistPath = path.join(nuntiaDir, 'sessions.json');
     this.load();
   }
 

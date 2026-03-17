@@ -121,7 +121,7 @@ Manages file uploads and project file operations:
 AES-256-GCM encryption for API keys:
 
 - Encrypts with random 16-byte IV per entry
-- Stores to `<bridgeDir>/keystore.json`
+- Stores to `<nuntiaDir>/keystore.json`
 - Keys are never logged, echoed, or stored in plaintext
 
 ### Command Router (`src/commands/`)

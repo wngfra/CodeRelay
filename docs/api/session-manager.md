@@ -25,7 +25,7 @@ class SessionManager {
 }
 ```
 
-On construction, creates the bridge directory and initializes the `SessionStore`.
+On construction, creates the `.nuntia` state directory and initializes the `SessionStore`.
 
 ### Directory Resolution
 

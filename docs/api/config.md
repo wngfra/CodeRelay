@@ -80,5 +80,5 @@ console.log(config.defaultModel); // 'gpt-4o'
 | `LOG_LEVEL` | `logLevel` | No | `info` |
 | `GIT_REMOTE_URL` | `gitRemoteUrl` | No | `''` |
 | `GIT_USER_NAME` | `gitUserName` | No | `Nuntia` |
-| `GIT_USER_EMAIL` | `gitUserEmail` | No | `bridge@localhost` |
+| `GIT_USER_EMAIL` | `gitUserEmail` | No | `nuntia@localhost` |
 | `MAX_UPLOAD_SIZE_MB` | `maxUploadSizeMb` | No | `50` |

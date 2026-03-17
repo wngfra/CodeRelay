@@ -38,7 +38,7 @@ All configuration is via environment variables loaded from a `.env` file.
 |----------|---------|-------------|
 | `GIT_REMOTE_URL` | _(empty)_ | Remote URL for `/push`. Leave empty for local-only |
 | `GIT_USER_NAME` | `Nuntia` | Git commit author name |
-| `GIT_USER_EMAIL` | `bridge@localhost` | Git commit author email |
+| `GIT_USER_EMAIL` | `nuntia@localhost` | Git commit author email |
 
 ### Files
 
@@ -66,7 +66,7 @@ DEFAULT_MODEL=claude-sonnet-4-20250514
 LOG_LEVEL=info
 GIT_REMOTE_URL=
 GIT_USER_NAME=Nuntia
-GIT_USER_EMAIL=bridge@localhost
+GIT_USER_EMAIL=nuntia@localhost
 MAX_UPLOAD_SIZE_MB=50
 ```
 
@@ -83,7 +83,7 @@ WORKSPACE_ROOT/
 │   └── default/
 ├── wa_<chat_jid>/              # WhatsApp chat
 │   └── default/
-└── .bridge/                    # Internal state
+└── .nuntia/                    # Internal state
     ├── sessions.json           # Session persistence
     ├── keystore.json           # Encrypted API keys
     └── whatsapp-auth/          # WhatsApp auth state
@@ -101,7 +101,7 @@ default/
 
 ## WhatsApp Setup
 
-When `WHATSAPP_ENABLED=true`, the bot prints a QR code to the terminal on first start. Scan it with WhatsApp to authenticate. Auth state is persisted to `<WORKSPACE_ROOT>/.bridge/whatsapp-auth/`, so you only need to scan once.
+When `WHATSAPP_ENABLED=true`, the bot prints a QR code to the terminal on first start. Scan it with WhatsApp to authenticate. Auth state is persisted to `<WORKSPACE_ROOT>/.nuntia/whatsapp-auth/`, so you only need to scan once.
 
 ::: warning
 WhatsApp Web automation uses an unofficial API. There is a risk of account restrictions. Use a dedicated number.
