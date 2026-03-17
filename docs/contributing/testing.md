@@ -1,6 +1,6 @@
 # Testing
 
-CodeRelay uses [Vitest](https://vitest.dev/) for unit and integration tests.
+Nuntia uses [Vitest](https://vitest.dev/) for unit and integration tests.
 
 ## Running Tests
 
@@ -53,7 +53,7 @@ import os from 'node:os';
 let tmpDir: string;
 
 beforeEach(() => {
-  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'coderelay-test-'));
+  tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nuntia-test-'));
 });
 
 afterEach(() => {

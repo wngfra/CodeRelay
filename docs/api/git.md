@@ -78,7 +78,7 @@ Creates a task branch, stages all changes, and commits:
 3. Creates and checks out the branch (`git checkout -b`)
 4. Stages all changes (`git add -A`)
 5. If no changes, checks out `main` and returns `null`
-6. Commits with message `[CodeRelay] <first 100 chars of prompt>`
+6. Commits with message `[Nuntia] <first 100 chars of prompt>`
 7. Returns `{ branchName, filesChanged }`
 
 Returns `null` if there are no changes to commit or if an error occurs. Errors are logged but not thrown (non-blocking).

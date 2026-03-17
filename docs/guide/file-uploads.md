@@ -1,6 +1,6 @@
 # File Uploads
 
-CodeRelay supports receiving file uploads from both Telegram and WhatsApp. Uploaded files are saved to the active project directory and can be referenced in coding prompts.
+Nuntia supports receiving file uploads from both Telegram and WhatsApp. Uploaded files are saved to the active project directory and can be referenced in coding prompts.
 
 ## Supported File Types
 

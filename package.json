@@ -1,5 +1,5 @@
 {
-  "name": "coderelay",
+  "name": "nuntia",
   "version": "1.2.0",
   "description": "Telegram + WhatsApp to OpenCode multi-agent coding interface",
   "type": "module",

@@ -1,14 +1,14 @@
 <div align="center">
 
-<img src="logo.svg" alt="CodeRelay" width="160">
+<img src="logo.svg" alt="Nuntia" width="160">
 
-# CodeRelay
+# Nuntia
 
 **Chat-to-code pipeline for Telegram and WhatsApp.**
 
-[![Version](https://img.shields.io/badge/version-1.2.0-blue?style=flat-square)](https://github.com/wngfra/CodeRelay/releases)
-[![Docs](https://img.shields.io/badge/docs-live-brightgreen?style=flat-square)](https://wngfra.github.io/CodeRelay/)
-[![Deploy Docs](https://img.shields.io/github/actions/workflow/status/wngfra/CodeRelay/deploy-docs.yml?label=docs%20deploy&style=flat-square)](https://github.com/wngfra/CodeRelay/actions/workflows/deploy-docs.yml)
+[![Version](https://img.shields.io/badge/version-1.2.0-blue?style=flat-square)](https://github.com/wngfra/Nuntia/releases)
+[![Docs](https://img.shields.io/badge/docs-live-brightgreen?style=flat-square)](https://wngfra.github.io/Nuntia/)
+[![Deploy Docs](https://img.shields.io/github/actions/workflow/status/wngfra/Nuntia/deploy-docs.yml?label=docs%20deploy&style=flat-square)](https://github.com/wngfra/Nuntia/actions/workflows/deploy-docs.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-orange?style=flat-square)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-43853d?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -16,7 +16,7 @@
 Connect Telegram and WhatsApp to [OpenCode](https://github.com/opencode-ai/opencode)'s multi-agent coding system.<br>
 Send natural language requests via chat. Get real-time streaming feedback as agents execute.
 
-[Documentation](https://wngfra.github.io/CodeRelay/) &#8226; [Getting Started](https://wngfra.github.io/CodeRelay/guide/getting-started) &#8226; [API Reference](https://wngfra.github.io/CodeRelay/api/)
+[Documentation](https://wngfra.github.io/Nuntia/) &#8226; [Getting Started](https://wngfra.github.io/Nuntia/guide/getting-started) &#8226; [API Reference](https://wngfra.github.io/Nuntia/api/)
 
 </div>
 
@@ -24,13 +24,13 @@ Send natural language requests via chat. Get real-time streaming feedback as age
 
 ## Overview
 
-CodeRelay is a self-hosted messaging bot that bridges chat platforms to OpenCode's planner-coder-reviewer pipeline. Users send coding requests via Telegram or WhatsApp and receive procedural, stage-by-stage feedback as the task executes. Each conversation maps to an isolated project directory with automatic Git branching, TDD workflow enforcement, and encrypted API key storage.
+Nuntia is a self-hosted messaging bot that bridges chat platforms to OpenCode's planner-coder-reviewer pipeline. Users send coding requests via Telegram or WhatsApp and receive procedural, stage-by-stage feedback as the task executes. Each conversation maps to an isolated project directory with automatic Git branching, TDD workflow enforcement, and encrypted API key storage.
 
 ```
 You (Telegram/WhatsApp)
   │
   ▼
-CodeRelay ──► OpenCode CLI ──► Agent Pipeline
+Nuntia ──► OpenCode CLI ──► Agent Pipeline
   │                                │
   ◄── streaming stage output ──────┘
   ◄── task summary + git branch ───┘
@@ -54,7 +54,7 @@ CodeRelay ──► OpenCode CLI ──► Agent Pipeline
 ## Quick Start
 
 ```bash
-git clone https://github.com/wngfra/CodeRelay.git && cd CodeRelay
+git clone https://github.com/wngfra/Nuntia.git && cd Nuntia
 npm install
 cp .env.example .env
 ```
@@ -96,7 +96,7 @@ npm run build && npm start   # production
 
 ## Configuration
 
-All config via `.env`. See [`.env.example`](.env.example) or the [Configuration docs](https://wngfra.github.io/CodeRelay/guide/configuration).
+All config via `.env`. See [`.env.example`](.env.example) or the [Configuration docs](https://wngfra.github.io/Nuntia/guide/configuration).
 
 | Variable | Required | Default |
 |----------|:--------:|---------|
@@ -110,7 +110,7 @@ All config via `.env`. See [`.env.example`](.env.example) or the [Configuration 
 | `DEFAULT_MODEL` | | `claude-sonnet-4-20250514` |
 | `LOG_LEVEL` | | `info` |
 | `GIT_REMOTE_URL` | | &mdash; |
-| `GIT_USER_NAME` | | `CodeRelay` |
+| `GIT_USER_NAME` | | `Nuntia` |
 | `GIT_USER_EMAIL` | | `bridge@localhost` |
 | `MAX_UPLOAD_SIZE_MB` | | `50` |
 
@@ -132,18 +132,18 @@ src/
 └── commands/     19 bot commands across 5 modules
 ```
 
-Full architecture diagrams and data flow in the [Architecture docs](https://wngfra.github.io/CodeRelay/guide/architecture).
+Full architecture diagrams and data flow in the [Architecture docs](https://wngfra.github.io/Nuntia/guide/architecture).
 
 ## Documentation
 
-Comprehensive docs at **[wngfra.github.io/CodeRelay](https://wngfra.github.io/CodeRelay/)**:
+Comprehensive docs at **[wngfra.github.io/Nuntia](https://wngfra.github.io/Nuntia/)**:
 
-- **[Getting Started](https://wngfra.github.io/CodeRelay/guide/getting-started)** &mdash; install, configure, first interaction
-- **[Commands](https://wngfra.github.io/CodeRelay/guide/commands)** &mdash; all 19 commands with examples
-- **[Architecture](https://wngfra.github.io/CodeRelay/guide/architecture)** &mdash; system diagram, data flow, concurrency model
-- **[Security](https://wngfra.github.io/CodeRelay/guide/security)** &mdash; encryption, access control, hardening
-- **[API Reference](https://wngfra.github.io/CodeRelay/api/)** &mdash; every exported class, function, interface, and type
-- **[Contributing](https://wngfra.github.io/CodeRelay/contributing/development)** &mdash; dev setup, adding transports, adding commands, testing
+- **[Getting Started](https://wngfra.github.io/Nuntia/guide/getting-started)** &mdash; install, configure, first interaction
+- **[Commands](https://wngfra.github.io/Nuntia/guide/commands)** &mdash; all 19 commands with examples
+- **[Architecture](https://wngfra.github.io/Nuntia/guide/architecture)** &mdash; system diagram, data flow, concurrency model
+- **[Security](https://wngfra.github.io/Nuntia/guide/security)** &mdash; encryption, access control, hardening
+- **[API Reference](https://wngfra.github.io/Nuntia/api/)** &mdash; every exported class, function, interface, and type
+- **[Contributing](https://wngfra.github.io/Nuntia/contributing/development)** &mdash; dev setup, adding transports, adding commands, testing
 
 Docs auto-deploy to GitHub Pages on pushes to `main` that change `docs/`.
 
@@ -170,7 +170,7 @@ Docs auto-deploy to GitHub Pages on pushes to `main` that change `docs/`.
 - Git credentials &rarr; use SSH keys, not `.env`
 - Process isolation &rarr; run in Docker for additional hardening
 
-See the full [Security guide](https://wngfra.github.io/CodeRelay/guide/security).
+See the full [Security guide](https://wngfra.github.io/Nuntia/guide/security).
 
 ## Tech Stack
 

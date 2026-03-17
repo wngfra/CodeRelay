@@ -11,8 +11,8 @@
 ## Installation
 
 ```bash
-git clone https://github.com/wngfra/CodeRelay.git
-cd CodeRelay
+git clone https://github.com/wngfra/Nuntia.git
+cd Nuntia
 npm install
 ```
 
@@ -75,7 +75,7 @@ docker compose up -d
 Once the bot is running, open Telegram and send `/start` to your bot. You'll see:
 
 ```
-Welcome to CodeRelay!
+Welcome to Nuntia!
 
 Active project: default
 Model: claude-sonnet-4-20250514
@@ -100,7 +100,7 @@ The bot will:
 ## What Happens Under the Hood
 
 ```
-You (Telegram) → CodeRelay Bot → OpenCode CLI → Agent Pipeline
+You (Telegram) → Nuntia Bot → OpenCode CLI → Agent Pipeline
                                                      │
                   ← Streaming output (stage-by-stage) ←
                   ← Task summary + Git branch name    ←

@@ -3,15 +3,15 @@
 ## Clone and Install
 
 ```bash
-git clone https://github.com/wngfra/CodeRelay.git
-cd CodeRelay
+git clone https://github.com/wngfra/Nuntia.git
+cd Nuntia
 npm install
 ```
 
 ## Project Layout
 
 ```
-coderelay/
+nuntia/
 ├── src/                      # TypeScript source
 │   ├── index.ts              # Entry point / orchestrator
 │   ├── config.ts             # Environment config loader

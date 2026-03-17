@@ -34,7 +34,7 @@ describe('deduplicateFilename', () => {
   let tmpDir: string;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'coderelay-files-test-'));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nuntia-files-test-'));
   });
 
   afterEach(() => {
@@ -71,7 +71,7 @@ describe('FileHandler', () => {
   let handler: FileHandler;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'coderelay-handler-test-'));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nuntia-handler-test-'));
     process.env.MASTER_KEY = 'a'.repeat(64);
     process.env.TELEGRAM_BOT_TOKEN = 'test-token';
     process.env.ALLOWED_CHAT_IDS = '123';

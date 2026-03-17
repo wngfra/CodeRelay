@@ -60,7 +60,7 @@ describe('keystore file operations', () => {
   let tmpDir: string;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'coderelay-test-'));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nuntia-test-'));
   });
 
   afterEach(() => {

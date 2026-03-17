@@ -1,5 +1,5 @@
 /**
- * CodeRelay — Entry Point
+ * Nuntia — Entry Point
  *
  * Telegram + WhatsApp to OpenCode multi-agent coding interface.
  * Initializes all modules, wires up message handling, manages the
@@ -23,7 +23,7 @@ import { checkDiskSpace } from './utils.js';
 
 const log = createLogger('main');
 
-class CodeRelay {
+class Nuntia {
   private config = loadConfig();
   private sessionManager = new SessionManager();
   private gitManager = new GitManager();
@@ -42,7 +42,7 @@ class CodeRelay {
   }
 
   async start(): Promise<void> {
-    log.info('Starting CodeRelay...');
+    log.info('Starting Nuntia...');
 
     // Initialize Telegram
     const telegram = new TelegramAdapter();
@@ -81,7 +81,7 @@ class CodeRelay {
     process.on('SIGTERM', shutdown);
     process.on('SIGINT', shutdown);
 
-    log.info('CodeRelay is running');
+    log.info('Nuntia is running');
   }
 
   private async handleMessage(
@@ -380,8 +380,8 @@ class CodeRelay {
 }
 
 // Start the application
-const app = new CodeRelay();
+const app = new Nuntia();
 app.start().catch((err) => {
-  log.fatal({ err }, 'Failed to start CodeRelay');
+  log.fatal({ err }, 'Failed to start Nuntia');
   process.exit(1);
 });

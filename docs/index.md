@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: CodeRelay
+  name: Nuntia
   text: Chat-to-Code Pipeline
   tagline: Connect Telegram and WhatsApp to OpenCode's multi-agent coding system. Send requests via chat, get real-time streaming feedback.
   image:
     src: /logo.svg
-    alt: CodeRelay
+    alt: Nuntia
   actions:
     - theme: brand
       text: Get Started
@@ -17,7 +17,7 @@ hero:
       link: /api/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/wngfra/CodeRelay
+      link: https://github.com/wngfra/Nuntia
 
 features:
   - title: Dual Transport

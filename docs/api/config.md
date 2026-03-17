@@ -79,6 +79,6 @@ console.log(config.defaultModel); // 'gpt-4o'
 | `DEFAULT_MODEL` | `defaultModel` | No | `claude-sonnet-4-20250514` |
 | `LOG_LEVEL` | `logLevel` | No | `info` |
 | `GIT_REMOTE_URL` | `gitRemoteUrl` | No | `''` |
-| `GIT_USER_NAME` | `gitUserName` | No | `CodeRelay` |
+| `GIT_USER_NAME` | `gitUserName` | No | `Nuntia` |
 | `GIT_USER_EMAIL` | `gitUserEmail` | No | `bridge@localhost` |
 | `MAX_UPLOAD_SIZE_MB` | `maxUploadSizeMb` | No | `50` |

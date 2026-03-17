@@ -58,7 +58,7 @@ Parses a command message into its name and arguments:
 | `/start` | `start` | `''` |
 | `/new my-project` | `new` | `my-project` |
 | `/apikey anthropic sk-ant...` | `apikey` | `anthropic sk-ant...` |
-| `/model@CodeRelayBot gpt-4o` | `model` | `gpt-4o` |
+| `/model@NuntiaBot gpt-4o` | `model` | `gpt-4o` |
 
 Handles the `@botname` suffix that Telegram appends in groups.
 

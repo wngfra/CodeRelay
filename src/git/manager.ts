@@ -123,7 +123,7 @@ export class GitManager {
       const filesChanged = status.files.map((f) => f.path);
 
       // Commit with task summary
-      const commitMsg = `[CodeRelay] ${taskPrompt.slice(0, 100)}`;
+      const commitMsg = `[Nuntia] ${taskPrompt.slice(0, 100)}`;
       await git.commit(commitMsg);
 
       log.info({ projectDir, branchName, filesChanged: filesChanged.length }, 'Task committed');

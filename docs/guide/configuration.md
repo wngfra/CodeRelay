@@ -37,7 +37,7 @@ All configuration is via environment variables loaded from a `.env` file.
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `GIT_REMOTE_URL` | _(empty)_ | Remote URL for `/push`. Leave empty for local-only |
-| `GIT_USER_NAME` | `CodeRelay` | Git commit author name |
+| `GIT_USER_NAME` | `Nuntia` | Git commit author name |
 | `GIT_USER_EMAIL` | `bridge@localhost` | Git commit author email |
 
 ### Files
@@ -65,7 +65,7 @@ MASTER_KEY=0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 DEFAULT_MODEL=claude-sonnet-4-20250514
 LOG_LEVEL=info
 GIT_REMOTE_URL=
-GIT_USER_NAME=CodeRelay
+GIT_USER_NAME=Nuntia
 GIT_USER_EMAIL=bridge@localhost
 MAX_UPLOAD_SIZE_MB=50
 ```

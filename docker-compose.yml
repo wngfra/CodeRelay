@@ -1,7 +1,7 @@
 services:
-  coderelay:
+  nuntia:
     build: .
-    container_name: coderelay
+    container_name: nuntia
     restart: unless-stopped
     env_file:
       - .env

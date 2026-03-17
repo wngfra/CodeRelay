@@ -1,6 +1,6 @@
 # Adding Commands
 
-This guide covers adding new bot commands to CodeRelay.
+This guide covers adding new bot commands to Nuntia.
 
 ## Approach
 

@@ -52,7 +52,7 @@ export function loadConfig(): AppConfig {
     defaultModel: optionalEnv('DEFAULT_MODEL', 'claude-sonnet-4-20250514'),
     logLevel: optionalEnv('LOG_LEVEL', 'info'),
     gitRemoteUrl: optionalEnv('GIT_REMOTE_URL', ''),
-    gitUserName: optionalEnv('GIT_USER_NAME', 'CodeRelay'),
+    gitUserName: optionalEnv('GIT_USER_NAME', 'Nuntia'),
     gitUserEmail: optionalEnv('GIT_USER_EMAIL', 'bridge@localhost'),
     maxUploadSizeMb: parseInt(optionalEnv('MAX_UPLOAD_SIZE_MB', '50'), 10),
   };

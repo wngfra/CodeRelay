@@ -120,7 +120,7 @@ private async throttle(chatId: string): Promise<void> {
 In `src/index.ts`, add your adapter alongside Telegram and WhatsApp:
 
 ```typescript
-// In CodeRelay.start()
+// In Nuntia.start()
 if (this.config.newTransportEnabled) {
   const adapter = new NewTransportAdapter();
   adapter.onMessage((msg) => this.handleMessage(msg, adapter));

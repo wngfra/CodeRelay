@@ -1,6 +1,6 @@
 # API Reference
 
-Complete reference for every exported class, function, interface, and type in CodeRelay.
+Complete reference for every exported class, function, interface, and type in Nuntia.
 
 ## Module Map
 

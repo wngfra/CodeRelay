@@ -9,7 +9,7 @@ describe('SessionStore', () => {
   let store: SessionStore;
 
   beforeEach(() => {
-    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'coderelay-session-test-'));
+    tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'nuntia-session-test-'));
     store = new SessionStore(tmpDir);
   });
 

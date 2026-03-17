@@ -1,19 +1,19 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
-  title: 'CodeRelay',
+  title: 'Nuntia',
   description: 'Telegram + WhatsApp to OpenCode multi-agent coding interface',
   lang: 'en-US',
-  base: '/CodeRelay/',
+  base: '/Nuntia/',
 
   head: [
     ['meta', { name: 'theme-color', content: '#4f46e5' }],
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/CodeRelay/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/Nuntia/logo.svg' }],
   ],
 
   themeConfig: {
     logo: '/logo.svg',
-    siteTitle: 'CodeRelay',
+    siteTitle: 'Nuntia',
 
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
@@ -121,17 +121,17 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/wngfra/CodeRelay' },
+      { icon: 'github', link: 'https://github.com/wngfra/Nuntia' },
     ],
 
     editLink: {
-      pattern: 'https://github.com/wngfra/CodeRelay/edit/main/docs/:path',
+      pattern: 'https://github.com/wngfra/Nuntia/edit/main/docs/:path',
       text: 'Edit this page on GitHub',
     },
 
     footer: {
       message: 'Released under the Apache 2.0 License.',
-      copyright: 'CodeRelay',
+      copyright: 'Nuntia',
     },
 
     outline: {

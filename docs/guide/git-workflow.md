@@ -1,10 +1,10 @@
 # Git Workflow
 
-CodeRelay automatically manages Git repositories for each project, creating branches and commits for every completed task.
+Nuntia automatically manages Git repositories for each project, creating branches and commits for every completed task.
 
 ## Auto-Initialization
 
-When a new project is created (via `/new` or `/start`), CodeRelay:
+When a new project is created (via `/new` or `/start`), Nuntia:
 
 1. Runs `git init`
 2. Configures `user.name` and `user.email` from `GIT_USER_NAME` / `GIT_USER_EMAIL`
@@ -13,11 +13,11 @@ When a new project is created (via `/new` or `/start`), CodeRelay:
 
 ## Task Branching
 
-When a coding task completes successfully, CodeRelay:
+When a coding task completes successfully, Nuntia:
 
 1. **Creates a new branch** from the current HEAD
 2. **Stages all changes** (`git add -A`)
-3. **Commits** with the message `[CodeRelay] <task description>`
+3. **Commits** with the message `[Nuntia] <task description>`
 4. **Reports** the branch name and changed files to chat
 
 ### Branch Naming

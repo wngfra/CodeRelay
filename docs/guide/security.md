@@ -86,11 +86,11 @@ Each OpenCode task runs as a child process with:
 
 ### Docker Deployment
 
-For additional isolation, run CodeRelay in Docker:
+For additional isolation, run Nuntia in Docker:
 
 ```yaml
 services:
-  coderelay:
+  nuntia:
     build: .
     security_opt:
       - no-new-privileges:true

@@ -33,7 +33,7 @@ export class ProjectCommands {
     await transport.sendMessage({
       chatId: msg.chatId,
       text: [
-        'Welcome to CodeRelay!',
+        'Welcome to Nuntia!',
         '',
         `Active project: \`${session.activeProject}\``,
         `Model: \`${session.model}\``,
@@ -47,7 +47,7 @@ export class ProjectCommands {
 
   async handleHelp(msg: IncomingMessage, transport: TransportAdapter): Promise<void> {
     const commands = [
-      '*CodeRelay Commands*',
+      '*Nuntia Commands*',
       '',
       '`/start` — Initialize bot',
       '`/help` — Show this help',
