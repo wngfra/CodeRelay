@@ -7,7 +7,7 @@ export default defineConfig({
   base: '/Nuntia/',
 
   head: [
-    ['meta', { name: 'theme-color', content: '#4f46e5' }],
+    ['meta', { name: 'theme-color', content: '#dc2626' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/Nuntia/logo.svg' }],
   ],
 

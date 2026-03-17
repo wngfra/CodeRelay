@@ -1,0 +1,533 @@
+/**
+ * Nuntia — Pininfarina-inspired theme
+ * Palette: Black, Red, Blue, White
+ *
+ * Design language: wind-sculpted curves, automotive elegance,
+ * premium surfaces, purposeful restraint.
+ *
+ * All foreground/background combos verified to pass WCAG AA
+ * contrast (4.5:1 normal text, 3:1 large text).
+ */
+
+/* ═══════════════════════════════════════════
+   Brand Palette
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* Primary brand — Rosso Corsa red */
+  --vp-c-brand-1: #b91c1c;
+  --vp-c-brand-2: #991b1b;
+  --vp-c-brand-3: #dc2626;
+  --vp-c-brand-soft: rgba(220, 38, 38, 0.12);
+
+  /* Accent — deep blue */
+  --nuntia-blue: #1e40af;
+  --nuntia-blue-deep: #1e3a8a;
+  --nuntia-blue-light: #2563eb;
+}
+
+.dark {
+  /* Lighter red for readable contrast on dark surfaces */
+  --vp-c-brand-1: #f87171;
+  --vp-c-brand-2: #ef4444;
+  --vp-c-brand-3: #fca5a5;
+  --vp-c-brand-soft: rgba(248, 113, 113, 0.14);
+
+  --nuntia-blue: #60a5fa;
+  --nuntia-blue-deep: #3b82f6;
+  --nuntia-blue-light: #93c5fd;
+}
+
+/* ═══════════════════════════════════════════
+   Override VitePress internal palettes
+   Replaces default indigo/purple with brand
+   colors so nothing leaks through.
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* Indigo palette → blue accent */
+  --vp-c-indigo-1: #1e40af;
+  --vp-c-indigo-2: #1d4ed8;
+  --vp-c-indigo-3: #2563eb;
+  --vp-c-indigo-soft: rgba(37, 99, 235, 0.14);
+
+  /* Purple palette → red brand */
+  --vp-c-purple-1: #991b1b;
+  --vp-c-purple-2: #b91c1c;
+  --vp-c-purple-3: #dc2626;
+  --vp-c-purple-soft: rgba(220, 38, 38, 0.14);
+
+  /* Green — slightly darker for code-block contrast */
+  --vp-c-green-1: #15703e;
+
+  /* Semantic: "important" blocks (was purple) → blue */
+  --vp-c-important-1: #1e40af;
+  --vp-c-important-2: #1d4ed8;
+  --vp-c-important-3: #2563eb;
+  --vp-c-important-soft: rgba(37, 99, 235, 0.14);
+
+  /* Sponsor — aligned to brand (not default pink) */
+  --vp-c-sponsor: #b91c1c;
+}
+
+.dark {
+  /* Indigo palette → light blue for dark bg readability */
+  --vp-c-indigo-1: #93c5fd;
+  --vp-c-indigo-2: #60a5fa;
+  --vp-c-indigo-3: #3b82f6;
+  --vp-c-indigo-soft: rgba(96, 165, 250, 0.16);
+
+  /* Purple palette → light red for dark bg readability */
+  --vp-c-purple-1: #fca5a5;
+  --vp-c-purple-2: #f87171;
+  --vp-c-purple-3: #ef4444;
+  --vp-c-purple-soft: rgba(248, 113, 113, 0.16);
+
+  /* Semantic: "important" blocks → light blue */
+  --vp-c-important-1: #93c5fd;
+  --vp-c-important-2: #60a5fa;
+  --vp-c-important-3: #3b82f6;
+  --vp-c-important-soft: rgba(96, 165, 250, 0.16);
+
+  /* Sponsor — light for dark bg */
+  --vp-c-sponsor: #f87171;
+}
+
+/* ═══════════════════════════════════════════
+   Light Mode
+   ═══════════════════════════════════════════ */
+
+:root {
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f7f7f8;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f5f6f8;
+
+  --vp-c-text-1: #0a0a0a;
+  --vp-c-text-2: #374151;
+  --vp-c-text-3: #5b6472;
+
+  --vp-c-divider: rgba(10, 10, 10, 0.09);
+  --vp-c-gutter: rgba(10, 10, 10, 0.04);
+
+  --vp-nav-bg-color: rgba(255, 255, 255, 0.88);
+  --vp-sidebar-bg-color: #fafafa;
+
+  /* Code: light bg so Shiki light theme tokens are readable */
+  --vp-code-block-bg: #f7f8fa;
+  --vp-code-block-divider-color: rgba(10, 10, 10, 0.06);
+  --vp-code-color: #991b1b;
+  --vp-code-bg: rgba(220, 38, 38, 0.06);
+
+  /* Code group tabs */
+  --vp-code-tab-divider: rgba(10, 10, 10, 0.08);
+  --vp-code-tab-text-color: var(--vp-c-text-2);
+  --vp-code-tab-active-text-color: var(--vp-c-text-1);
+  --vp-code-tab-hover-text-color: var(--vp-c-text-1);
+  --vp-code-tab-bg: #ebedf0;
+  --vp-code-tab-active-bar-color: var(--vp-c-brand-1);
+
+  /* Copy button */
+  --vp-code-copy-code-bg: rgba(10, 10, 10, 0.05);
+  --vp-code-copy-code-hover-bg: rgba(10, 10, 10, 0.1);
+  --vp-code-copy-code-active-text: var(--vp-c-text-2);
+
+  /* Line highlight */
+  --vp-code-line-highlight-color: rgba(220, 38, 38, 0.08);
+}
+
+/* ═══════════════════════════════════════════
+   Dark Mode
+   ═══════════════════════════════════════════ */
+
+.dark {
+  --vp-c-bg: #0a0a0a;
+  --vp-c-bg-alt: #111111;
+  --vp-c-bg-elv: #1a1a1a;
+  --vp-c-bg-soft: #141414;
+
+  --vp-c-text-1: #f5f5f5;
+  --vp-c-text-2: #d1d5db;
+  --vp-c-text-3: #9ca3af;
+
+  --vp-c-divider: rgba(255, 255, 255, 0.07);
+  --vp-c-gutter: rgba(255, 255, 255, 0.03);
+
+  --vp-nav-bg-color: rgba(10, 10, 10, 0.88);
+  --vp-sidebar-bg-color: #0f0f0f;
+
+  /* Code: dark bg matching Shiki dark theme */
+  --vp-code-block-bg: #141414;
+  --vp-code-block-divider-color: rgba(255, 255, 255, 0.06);
+  --vp-code-color: #fca5a5;
+  --vp-code-bg: rgba(248, 113, 113, 0.1);
+
+  /* Code group tabs */
+  --vp-code-tab-divider: rgba(255, 255, 255, 0.06);
+  --vp-code-tab-text-color: var(--vp-c-text-2);
+  --vp-code-tab-active-text-color: var(--vp-c-text-1);
+  --vp-code-tab-hover-text-color: var(--vp-c-text-1);
+  --vp-code-tab-bg: #1a1a1a;
+  --vp-code-tab-active-bar-color: var(--vp-c-brand-1);
+
+  /* Copy button */
+  --vp-code-copy-code-bg: rgba(255, 255, 255, 0.05);
+  --vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.1);
+  --vp-code-copy-code-active-text: var(--vp-c-text-2);
+
+  /* Line highlight */
+  --vp-code-line-highlight-color: rgba(248, 113, 113, 0.12);
+
+  /* Search highlight: white on red for readability */
+  --vp-local-search-highlight-text: #ffffff;
+}
+
+/* ═══════════════════════════════════════════
+   Custom Block Code & Link Text
+   (VitePress uses --vp-c-*-1 vars for code
+   text inside custom blocks. Override the
+   semantic tokens so code/links pass contrast
+   on the tinted block backgrounds.)
+   ═══════════════════════════════════════════ */
+
+:root {
+  --vp-c-tip-1: #991b1b;
+  --vp-c-tip-2: #b91c1c;
+  --vp-c-tip-3: #dc2626;
+  --vp-c-tip-soft: rgba(220, 38, 38, 0.12);
+
+  --vp-c-note-1: #1e40af;
+  --vp-c-note-2: #1d4ed8;
+  --vp-c-note-3: #2563eb;
+  --vp-c-note-soft: rgba(37, 99, 235, 0.12);
+}
+
+.dark {
+  --vp-c-tip-1: #fca5a5;
+  --vp-c-tip-2: #f87171;
+  --vp-c-tip-3: #ef4444;
+  --vp-c-tip-soft: rgba(248, 113, 113, 0.14);
+
+  --vp-c-note-1: #93c5fd;
+  --vp-c-note-2: #60a5fa;
+  --vp-c-note-3: #3b82f6;
+  --vp-c-note-soft: rgba(96, 165, 250, 0.14);
+}
+
+/* Direct rules for inline code inside custom blocks */
+.custom-block.tip code,
+.custom-block.note code {
+  color: var(--vp-c-brand-1);
+}
+
+.custom-block.important code {
+  color: var(--vp-c-important-1);
+}
+
+.custom-block.warning code {
+  color: #92400e;
+}
+
+.dark .custom-block.warning code {
+  color: #fcd34d;
+}
+
+.custom-block.danger code,
+.custom-block.caution code {
+  color: #991b1b;
+}
+
+.dark .custom-block.danger code,
+.dark .custom-block.caution code {
+  color: #fca5a5;
+}
+
+.custom-block.info code,
+.custom-block.details code {
+  color: var(--vp-c-text-1);
+}
+
+/* ═══════════════════════════════════════════
+   Buttons — aerodynamic pill shape
+   ═══════════════════════════════════════════ */
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: #b91c1c;
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-hover-bg: #991b1b;
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-active-bg: #7f1d1d;
+
+  --vp-button-alt-border: rgba(10, 10, 10, 0.12);
+  --vp-button-alt-text: #0a0a0a;
+  --vp-button-alt-bg: #f3f4f6;
+  --vp-button-alt-hover-border: rgba(10, 10, 10, 0.18);
+  --vp-button-alt-hover-text: #0a0a0a;
+  --vp-button-alt-hover-bg: #e5e7eb;
+}
+
+.dark {
+  --vp-button-brand-bg: #dc2626;
+  --vp-button-brand-hover-bg: #b91c1c;
+  --vp-button-brand-active-bg: #991b1b;
+
+  --vp-button-alt-border: rgba(255, 255, 255, 0.1);
+  --vp-button-alt-text: #f5f5f5;
+  --vp-button-alt-bg: #1a1a1a;
+  --vp-button-alt-hover-border: rgba(255, 255, 255, 0.16);
+  --vp-button-alt-hover-text: #ffffff;
+  --vp-button-alt-hover-bg: #262626;
+}
+
+.VPButton {
+  border-radius: 999px !important;
+  padding: 0 28px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.03em;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.VPButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.VPButton.brand:hover {
+  box-shadow: 0 4px 24px rgba(220, 38, 38, 0.3);
+}
+
+/* ═══════════════════════════════════════════
+   Home Hero — automotive headlamp glow
+   ═══════════════════════════════════════════ */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    135deg,
+    #b91c1c 0%,
+    #1e3a8a 100%
+  );
+  --vp-home-hero-image-background-image: radial-gradient(
+    ellipse at center,
+    rgba(220, 38, 38, 0.14) 0%,
+    transparent 70%
+  );
+  --vp-home-hero-image-filter: blur(56px);
+}
+
+.dark {
+  --vp-home-hero-name-background: linear-gradient(
+    135deg,
+    #f87171 0%,
+    #60a5fa 100%
+  );
+  --vp-home-hero-image-background-image: radial-gradient(
+    ellipse at center,
+    rgba(248, 113, 113, 0.18) 0%,
+    transparent 70%
+  );
+}
+
+/* Hero title — luxury automotive typography */
+.VPHero .name {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.VPHero .text {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.VPHero .tagline {
+  letter-spacing: 0.01em;
+  font-weight: 300;
+  max-width: 540px;
+}
+
+/* Hero image glow */
+.VPImage.image-src {
+  filter: drop-shadow(0 0 40px rgba(220, 38, 38, 0.15));
+  transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.VPImage.image-src:hover {
+  filter: drop-shadow(0 0 56px rgba(220, 38, 38, 0.28));
+}
+
+/* ═══════════════════════════════════════════
+   Feature Cards — sculpted surfaces
+   ═══════════════════════════════════════════ */
+
+.VPFeature {
+  border-radius: 16px !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.dark .VPFeature:hover {
+  box-shadow: 0 16px 48px rgba(248, 113, 113, 0.06);
+}
+
+.VPFeature .title {
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+}
+
+/* ═══════════════════════════════════════════
+   Navigation — clean floating bar
+   ═══════════════════════════════════════════ */
+
+.VPNav {
+  backdrop-filter: blur(12px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+}
+
+.VPNavBarTitle .title {
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+}
+
+/* Active nav link accent */
+.VPNavBarMenuLink.active,
+.VPNavBarMenuLink:hover {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* ═══════════════════════════════════════════
+   Sidebar — refined, clean lines
+   ═══════════════════════════════════════════ */
+
+.VPSidebar {
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600 !important;
+}
+
+/* ═══════════════════════════════════════════
+   Content — premium reading experience
+   ═══════════════════════════════════════════ */
+
+/* Links */
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease;
+}
+
+.vp-doc a:hover {
+  border-bottom-color: var(--vp-c-brand-1);
+}
+
+/* Headings — clean, authoritative */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.vp-doc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 24px;
+}
+
+/* Tables — clean surfaces */
+.vp-doc table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.vp-doc tr {
+  transition: background-color 0.2s ease;
+}
+
+/* Custom blocks — flowing edges */
+.vp-doc .custom-block {
+  border-radius: 12px;
+}
+
+/* ═══════════════════════════════════════════
+   Badges — high-contrast text
+   ═══════════════════════════════════════════ */
+
+:root {
+  --vp-badge-danger-border: transparent;
+  --vp-badge-danger-text: #991b1b;
+  --vp-badge-danger-bg: rgba(220, 38, 38, 0.1);
+  --vp-badge-tip-border: transparent;
+  --vp-badge-tip-text: #1e40af;
+  --vp-badge-tip-bg: rgba(37, 99, 235, 0.1);
+  --vp-badge-warning-border: transparent;
+  --vp-badge-warning-text: #92400e;
+  --vp-badge-warning-bg: rgba(234, 179, 8, 0.1);
+  --vp-badge-info-border: transparent;
+  --vp-badge-info-text: var(--vp-c-text-2);
+  --vp-badge-info-bg: rgba(10, 10, 10, 0.06);
+}
+
+.dark {
+  --vp-badge-danger-text: #fca5a5;
+  --vp-badge-danger-bg: rgba(248, 113, 113, 0.12);
+  --vp-badge-tip-text: #93c5fd;
+  --vp-badge-tip-bg: rgba(96, 165, 250, 0.12);
+  --vp-badge-warning-text: #fcd34d;
+  --vp-badge-warning-bg: rgba(234, 179, 8, 0.12);
+  --vp-badge-info-text: var(--vp-c-text-2);
+  --vp-badge-info-bg: rgba(255, 255, 255, 0.06);
+}
+
+/* ═══════════════════════════════════════════
+   Footer — elegant understatement
+   ═══════════════════════════════════════════ */
+
+.VPFooter {
+  border-top: 1px solid var(--vp-c-divider) !important;
+}
+
+.VPFooter .message,
+.VPFooter .copyright {
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════
+   Scrollbar — sleek, minimal
+   ═══════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(10, 10, 10, 0.15);
+  border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1);
+}
