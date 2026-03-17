@@ -1,0 +1,456 @@
+# Nuntia - Complete Documentation
+
+> Nuntia is a TypeScript application that connects Telegram and WhatsApp to OpenCode's multi-agent AI coding system. Users send natural language coding requests via chat and receive real-time streaming output, automatic Git branching, and TDD workflow enforcement.
+
+Source: https://github.com/wngfra/Nuntia
+License: Apache 2.0
+Runtime: Node.js 20+ / TypeScript 5+ (ESM)
+
+---
+
+# Getting Started
+
+## Prerequisites
+
+| Requirement | Version | Notes |
+|-------------|---------|-------|
+| Node.js | 20+ | ESM modules required |
+| OpenCode CLI | latest | Must be on PATH |
+| Telegram Bot Token | - | From @BotFather |
+
+## Installation
+
+```bash
+git clone https://github.com/wngfra/Nuntia.git
+cd Nuntia
+npm install
+```
+
+## Configuration
+
+Copy the example environment file and fill in the required values:
+
+```bash
+cp .env.example .env
+```
+
+Three variables are required to start:
+
+```dotenv
+TELEGRAM_BOT_TOKEN=123456:ABC-DEF1234...
+ALLOWED_CHAT_IDS=123456789
+MASTER_KEY=a1b2c3d4...  # Generate with: openssl rand -hex 32
+```
+
+## Running
+
+### Development
+
+```bash
+npm run dev
+```
+
+Uses tsx for on-the-fly TypeScript execution.
+
+### Production
+
+```bash
+npm run build
+npm start
+```
+
+### Docker
+
+```bash
+cp .env.example .env
+docker compose up -d
+```
+
+## First Interaction
+
+Send `/start` to your bot on Telegram. Then send a natural language coding request:
+
+```
+Build a simple Express.js hello world server with a health check endpoint
+```
+
+The bot will:
+1. Prepend the TDD workflow system prompt
+2. Spawn OpenCode in your project directory
+3. Stream agent stage transitions to chat in real-time
+4. Auto-commit the result to a new Git branch
+5. Send a summary with files changed and branch name
+
+Each chat maps to an isolated project directory:
+
+```
+workspaces/
+└── tg_123456789/
+    └── default/
+        ├── uploads/
+        ├── .git/
+        ├── SPEC.md
+        ├── tests/
+        ├── src/
+        ├── README.md
+        └── CHANGELOG.md
+```
+
+---
+
+# Configuration
+
+All configuration is via environment variables loaded from a `.env` file.
+
+## Required Variables
+
+| Variable | Description |
+|----------|-------------|
+| TELEGRAM_BOT_TOKEN | Telegram Bot API token from @BotFather |
+| ALLOWED_CHAT_IDS | Comma-separated whitelist of chat IDs |
+| MASTER_KEY | 32-byte hex string for AES-256-GCM encryption |
+
+## Optional Variables
+
+### Transport
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| WHATSAPP_ENABLED | false | Enable the WhatsApp adapter |
+
+### Workspace
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| WORKSPACE_ROOT | ./workspaces | Root directory for all project workspaces |
+| OPENCODE_BIN | opencode | Path to the OpenCode CLI binary |
+| TASK_TIMEOUT_MS | 600000 | Maximum task execution time (10 minutes) |
+
+### Model
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| DEFAULT_MODEL | claude-sonnet-4-20250514 | Default OpenCode model |
+
+### Git
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| GIT_REMOTE_URL | (empty) | Remote URL for /push |
+| GIT_USER_NAME | Nuntia | Git commit author name |
+| GIT_USER_EMAIL | nuntia@localhost | Git commit author email |
+
+### Files
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| MAX_UPLOAD_SIZE_MB | 50 | Maximum file upload size in MB |
+
+### Logging
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| LOG_LEVEL | info | Pino log level |
+
+## Directory Structure
+
+```
+WORKSPACE_ROOT/
+├── tg_<user_chat_id>/          # Telegram DM
+│   ├── default/                # Default project
+│   └── my-api/                 # Named project (via /new)
+├── tg_group_<group_id>/        # Telegram group
+│   └── default/
+├── wa_<chat_jid>/              # WhatsApp chat
+│   └── default/
+└── .nuntia/                    # Internal state
+    ├── sessions.json
+    ├── keystore.json
+    └── whatsapp-auth/
+```
+
+## WhatsApp Setup
+
+When WHATSAPP_ENABLED=true, the bot prints a QR code to the terminal on first start. Scan with WhatsApp to authenticate. Auth state is persisted.
+
+## Chat ID Whitelist
+
+ALLOWED_CHAT_IDS accepts user chat IDs, group chat IDs, and individual user IDs (checked as fallback). Messages from non-whitelisted chats are silently ignored.
+
+---
+
+# Bot Commands
+
+All commands work on both Telegram and WhatsApp unless noted otherwise.
+
+## Quick Reference
+
+| Command | Description |
+|---------|-------------|
+| /start | Initialize bot and create default project |
+| /help | Show command list |
+| /new <name> | Create and switch to a new project |
+| /switch <name> | Switch active project |
+| /projects | List all projects |
+| /files | List project files (tree, depth 2) |
+| /cat <path> | View file contents |
+| /status | Show session info |
+| /model <name> | Switch OpenCode model |
+| /models | List available models |
+| /apikey <provider> <key> | Store an API key (encrypted) |
+| /apikey list | Show configured providers |
+| /cancel | Cancel running task |
+| /clear | Clear session state |
+| /branches | List Git branches |
+| /checkout <branch> | Switch Git branch |
+| /push | Push branch to remote |
+| /diff | Show uncommitted or last-commit diff |
+| /uploads | List uploaded files |
+| /rm <path> | Delete a file |
+
+## Group Chat Behavior
+
+In Telegram groups:
+- All members on the whitelist can send prompts
+- Admin-only commands: /model, /apikey, /new, /switch
+- User attribution: each message includes [User: Name] in the prompt
+- Task queue: concurrent requests queued sequentially
+- Reply threading: bot responds as a reply to the requesting message
+
+---
+
+# File Uploads
+
+Nuntia supports file uploads from Telegram and WhatsApp. Files are saved to the active project directory.
+
+## Supported File Types
+
+Any file type: images (PNG, JPG, SVG), documents (PDF, TXT, MD), code files (TS, JS, PY), archives (ZIP, TAR.GZ), data files (JSON, CSV, SQL).
+
+## How It Works
+
+- Upload without caption: file saved, no task triggered
+- Upload with caption: file saved, caption sent to OpenCode with file reference
+- Reference uploaded files in later prompts by path
+
+## File Naming
+
+Filenames are sanitized (.. stripped, slashes stripped, leading dots stripped). Duplicates get numeric suffixes (design_2.png, design_3.png).
+
+## Size Limits
+
+Default 50MB limit (MAX_UPLOAD_SIZE_MB). Files exceeding the limit are rejected.
+
+---
+
+# Git Workflow
+
+Nuntia automatically manages Git repositories for each project.
+
+## Auto-Initialization
+
+New projects get: git init, user.name/email config, .gitignore, initial commit on main.
+
+## Task Branching
+
+On task completion:
+1. Creates new branch from HEAD
+2. Stages all changes (git add -A)
+3. Commits with message "[Nuntia] <task description>"
+4. Reports branch name and changed files to chat
+
+Branch names: first ~40 chars of prompt, kebab-cased, with YYYYMMDD-HHmmss timestamp.
+
+## Git Commands
+
+- /branches: list all local branches
+- /checkout <branch>: switch branch
+- /diff: show uncommitted changes (or last commit diff)
+- /push: push to configured remote (GIT_REMOTE_URL)
+
+## Non-Blocking Design
+
+Git failures don't prevent task output delivery.
+
+---
+
+# Architecture
+
+## System Diagram
+
+```
+Telegram/WhatsApp Users
+        |
+Transport Layer (grammY / Baileys)
+        |
+Session Manager (chat ID -> project dir, task queue)
+        |
+    +---+---+
+    |       |
+Command   Task Pipeline
+Router    (Workflow Prompt -> OpenCode Runner -> Output Parser -> Formatter)
+    |           |
+    +---+---+---+
+        |   |   |
+    Git  File  Crypto
+    Mgr  Hdlr  Store
+```
+
+## Module Responsibilities
+
+- Transport Layer: abstracts Telegram/WhatsApp behind TransportAdapter interface
+- Session Manager: maps chats to persistent sessions and project directories
+- OpenCode Runner: spawns CLI subprocess, streams stdout/stderr, handles timeout
+- Formatters: platform-specific output (Telegram MarkdownV2, WhatsApp plain text)
+- Git Manager: auto-init repos, task branches, commits, push, diff via simple-git
+- File Handler: uploads with dedup, sanitization, path traversal prevention
+- Crypto Keystore: AES-256-GCM encryption for API keys
+- Command Router: dispatches /commands to handler modules
+
+## Data Flow: Task Execution
+
+1. Transport adapter receives and converts message
+2. Session manager authorizes via whitelist
+3. File upload saved if attachment present
+4. Workflow system prompt prepended
+5. OpenCode CLI spawned in project directory
+6. stdout parsed and streamed to chat
+7. Platform formatter prepares messages
+8. On completion, commit to new task branch
+9. Summary sent with branch, files, test results
+
+## Concurrency Model
+
+- One OpenCode process per session
+- Task queue per chat
+- Transport-level throttling (2s Telegram, 3s WhatsApp)
+- Non-blocking Git
+- Graceful shutdown via SIGTERM
+
+---
+
+# Security
+
+## API Key Protection
+
+- AES-256-GCM encryption with random 16-byte IV per entry
+- Telegram: /apikey message auto-deleted after processing
+- Keys never logged, echoed, or stored in plaintext
+
+## Access Control
+
+- ALLOWED_CHAT_IDS whitelist (silent ignore for non-whitelisted)
+- Admin-only commands in groups: /model, /apikey, /new, /switch
+
+## File Upload Security
+
+- Path traversal prevention (../ stripped, slashes stripped)
+- Resolved path validated within project directory
+- Size limits enforced before download
+
+## Process Isolation
+
+- Each OpenCode task runs as child process with cwd set to project directory
+- Configurable timeout with SIGTERM -> SIGKILL escalation
+- Docker deployment recommended for additional isolation
+
+## Network Exposure
+
+- No HTTP endpoints (Telegram uses long polling)
+- WhatsApp connection is outbound-only WebSocket
+
+---
+
+# API Reference - Module Map
+
+| Module | File | Key Exports |
+|--------|------|-------------|
+| Config | src/config.ts | AppConfig, loadConfig(), resetConfig() |
+| Logger | src/logger.ts | rootLogger, createLogger() |
+| Utils | src/utils.ts | checkDiskSpace() |
+| Transport Types | src/transport/types.ts | Platform, IncomingMessage, TransportAdapter, MessageHandler |
+| Telegram Adapter | src/transport/telegram.ts | TelegramAdapter |
+| WhatsApp Adapter | src/transport/whatsapp.ts | WhatsAppAdapter |
+| Session Store | src/session/store.ts | SessionData, SessionStore |
+| Session Manager | src/session/manager.ts | QueuedRequest, SessionManager |
+| Output Parser | src/runner/parser.ts | AgentStage, ParsedLine, OutputStreamParser, stripAnsi(), parseLine() |
+| Workflow Prompt | src/runner/workflow-prompt.ts | WORKFLOW_SYSTEM_PROMPT, buildPrompt(), buildFileReferencePrompt() |
+| OpenCode Runner | src/runner/opencode.ts | TaskOptions, TaskResult, RunnerEvent, OpenCodeRunner |
+| Crypto Keystore | src/crypto/keystore.ts | encrypt(), decrypt(), storeApiKey(), getApiKey(), listProviders() |
+| Git Manager | src/git/manager.ts | deriveBranchName(), GitManager |
+| File Handler | src/files/handler.ts | sanitizeFilename(), deduplicateFilename(), FileHandler |
+| Formatters | src/formatter/*.ts | escapeMarkdownV2(), formatStageTransition(), formatCodeBlock(), formatTaskSummary() |
+| Command Router | src/commands/index.ts | CommandContext, CommandRouter |
+| Command Modules | src/commands/*.ts | ProjectCommands, ModelCommands, SessionCommands, GitCommands, FileCommands |
+
+## Export Summary
+
+| Category | Count |
+|----------|-------|
+| Interfaces | 13 |
+| Types | 4 |
+| Classes | 14 |
+| Functions | 21 |
+| Constants | 2 |
+| Source files | 23 |
+
+---
+
+# Contributing
+
+## Development Setup
+
+```bash
+git clone https://github.com/wngfra/Nuntia.git
+cd Nuntia
+npm install
+```
+
+### Scripts
+
+| Script | Command | Description |
+|--------|---------|-------------|
+| npm run dev | tsx src/index.ts | Development mode |
+| npm run build | tsc | Compile TypeScript |
+| npm start | node dist/index.js | Production |
+| npm test | vitest run | Run all tests |
+| npm run test:watch | vitest | Watch mode |
+| npm run lint | tsc --noEmit | Type-check |
+
+### Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Runtime | Node.js 20+ / TypeScript 5+ (ESM) |
+| Telegram | grammY |
+| WhatsApp | @whiskeysockets/baileys |
+| Git | simple-git |
+| Encryption | Node crypto (AES-256-GCM) |
+| Logging | pino |
+| Testing | vitest |
+| Docs | VitePress |
+
+## Adding a Transport
+
+1. Implement TransportAdapter interface in src/transport/newtransport.ts
+2. Update Platform type in src/transport/types.ts
+3. Convert platform messages to IncomingMessage
+4. Add rate limiting appropriate for the platform
+5. Register in src/index.ts entry point
+6. Optionally add a formatter in src/formatter/
+7. Add config variables in src/config.ts
+
+## Adding Commands
+
+Option 1: Add handler method to existing command module, wire in router, add to help text.
+Option 2: Create new command module class, register in router, add admin restriction if needed.
+
+Handler pattern: async handleX(msg: IncomingMessage, transport: TransportAdapter, args?: string): Promise<void>
+
+## Testing
+
+Vitest test suite: 79 tests across 6 files covering parser, crypto, session, git, files, and runner modules.
+
+Tests set their own environment variables. Config module caches results - call resetConfig() after env var changes.
+
+Patterns: temp directories for file system tests, direct testing for pure functions, env setup for classes with dependencies.

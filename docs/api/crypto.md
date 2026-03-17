@@ -1,3 +1,8 @@
+---
+title: Crypto Keystore API
+description: API reference for AES-256-GCM encrypt(), decrypt(), storeApiKey(), getApiKey(), and listProviders() for secure API key storage.
+---
+
 # Crypto Keystore
 
 **File:** `src/crypto/keystore.ts`

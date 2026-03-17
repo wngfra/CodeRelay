@@ -1,3 +1,8 @@
+---
+title: Getting Started
+description: Install Nuntia, configure Telegram credentials, and run your first AI-assisted coding task via chat in under five minutes.
+---
+
 # Getting Started
 
 ## Prerequisites

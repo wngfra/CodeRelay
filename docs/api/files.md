@@ -1,3 +1,8 @@
+---
+title: File Handler API
+description: API reference for FileHandler, sanitizeFilename(), and deduplicateFilename() managing chat file uploads with size validation and path safety.
+---
+
 # File Handler
 
 **File:** `src/files/handler.ts`

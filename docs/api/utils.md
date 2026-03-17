@@ -1,3 +1,8 @@
+---
+title: Utils API
+description: API reference for shared utility functions including checkDiskSpace() for workspace health monitoring.
+---
+
 # Utils
 
 **File:** `src/utils.ts`

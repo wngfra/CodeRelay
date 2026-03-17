@@ -1,3 +1,8 @@
+---
+title: Logger API
+description: API reference for rootLogger and createLogger() providing structured JSON logging via Pino with per-module child loggers.
+---
+
 # Logger
 
 **File:** `src/logger.ts`

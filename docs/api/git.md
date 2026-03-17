@@ -1,3 +1,8 @@
+---
+title: Git Manager API
+description: API reference for GitManager and deriveBranchName() handling repo initialization, task branching, auto-commits, push, and diff via simple-git.
+---
+
 # Git Manager
 
 **File:** `src/git/manager.ts`

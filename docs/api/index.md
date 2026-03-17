@@ -1,3 +1,8 @@
+---
+title: API Reference
+description: Complete API reference for all Nuntia exported classes, interfaces, functions, and types across 23 source modules.
+---
+
 # API Reference
 
 Complete reference for every exported class, function, interface, and type in Nuntia.

@@ -1,22 +1,35 @@
 <div align="center">
 
-<img src="logo.svg" alt="Nuntia" width="160">
+<br>
+
+<img src="logo.svg" alt="Nuntia" width="180">
+
+<br>
 
 # Nuntia
 
 **Chat-to-code pipeline for Telegram and WhatsApp.**
 
-[![Version](https://img.shields.io/badge/version-1.2.0-blue?style=flat-square)](https://github.com/wngfra/Nuntia/releases)
-[![Docs](https://img.shields.io/badge/docs-live-brightgreen?style=flat-square)](https://wngfra.github.io/Nuntia/)
-[![Deploy Docs](https://img.shields.io/github/actions/workflow/status/wngfra/Nuntia/deploy-docs.yml?label=docs%20deploy&style=flat-square)](https://github.com/wngfra/Nuntia/actions/workflows/deploy-docs.yml)
-[![License](https://img.shields.io/badge/license-Apache%202.0-orange?style=flat-square)](LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D20-43853d?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5+-3178c6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+<br>
+
+[![Version](https://img.shields.io/badge/version-1.2.0-dc2626?style=flat-square&labelColor=0a0a0a)](https://github.com/wngfra/Nuntia/releases)
+[![Docs](https://img.shields.io/badge/docs-live-1e3a8a?style=flat-square&labelColor=0a0a0a)](https://wngfra.github.io/Nuntia/)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/wngfra/Nuntia/deploy-docs.yml?label=deploy&style=flat-square&labelColor=0a0a0a)](https://github.com/wngfra/Nuntia/actions/workflows/deploy-docs.yml)
+[![License](https://img.shields.io/badge/license-Apache%202.0-f5f5f5?style=flat-square&labelColor=0a0a0a)](LICENSE)
+
+[![Node](https://img.shields.io/badge/node-%3E%3D20-dc2626?style=flat-square&logo=node.js&logoColor=white&labelColor=0a0a0a)](https://nodejs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5+-1e3a8a?style=flat-square&logo=typescript&logoColor=white&labelColor=0a0a0a)](https://www.typescriptlang.org)
+
+<br>
 
 Connect Telegram and WhatsApp to [OpenCode](https://github.com/opencode-ai/opencode)'s multi-agent coding system.<br>
 Send natural language requests via chat. Get real-time streaming feedback as agents execute.
 
-[Documentation](https://wngfra.github.io/Nuntia/) &#8226; [Getting Started](https://wngfra.github.io/Nuntia/guide/getting-started) &#8226; [API Reference](https://wngfra.github.io/Nuntia/api/)
+<br>
+
+[**Documentation**](https://wngfra.github.io/Nuntia/) &nbsp;&middot;&nbsp; [**Getting Started**](https://wngfra.github.io/Nuntia/guide/getting-started) &nbsp;&middot;&nbsp; [**API Reference**](https://wngfra.github.io/Nuntia/api/)
+
+<br>
 
 </div>
 
@@ -28,20 +41,22 @@ Nuntia is a self-hosted messaging bot that bridges chat platforms to OpenCode's 
 
 ```
 You (Telegram/WhatsApp)
-  │
-  ▼
-Nuntia ──► OpenCode CLI ──► Agent Pipeline
-  │                                │
-  ◄── streaming stage output ──────┘
-  ◄── task summary + git branch ───┘
+  |
+  v
+Nuntia ──> OpenCode CLI ──> Agent Pipeline
+  |                                |
+  <── streaming stage output ──────┘
+  <── task summary + git branch ───┘
 ```
+
+---
 
 ## Features
 
 | | Feature | Detail |
-|---|---------|--------|
+|:---:|---------|--------|
 | **Transport** | Dual platform | Telegram (grammY) + WhatsApp (Baileys) with per-platform rate limiting |
-| **Streaming** | Real-time output | Stage transitions sent immediately; code batched every 2-3s. Telegram edits in place |
+| **Streaming** | Real-time output | Stage transitions sent immediately; code batched every 2-3 s. Telegram edits in place |
 | **Workflow** | TDD enforcement | Every task: SPEC &rarr; TEST &rarr; IMPLEMENT &rarr; README &rarr; CHANGELOG |
 | **Git** | Auto branching | Completed tasks committed to `<task-brief>-<YYYYMMDD-HHmmss>` branches |
 | **Security** | Encrypted keys | AES-256-GCM at rest. `/apikey` messages auto-deleted on Telegram |
@@ -50,6 +65,8 @@ Nuntia ──► OpenCode CLI ──► Agent Pipeline
 | **Commands** | 19 bot commands | Projects, models, git, files, session management |
 | **Queue** | Sequential tasks | One process per session, requests queued with position notifications |
 | **Deploy** | Docker-ready | Dockerfile + docker-compose.yml included |
+
+---
 
 ## Quick Start
 
@@ -77,6 +94,8 @@ npm run build && npm start   # production
 
 > **Docker:** `docker compose up -d` after configuring `.env`.
 
+---
+
 ## Commands
 
 | Command | Description | | Command | Description |
@@ -93,6 +112,8 @@ npm run build && npm start   # production
 | `/clear` | Reset session | | | |
 
 > In groups, `/model`, `/apikey`, `/new`, `/switch` require admin.
+
+---
 
 ## Configuration
 
@@ -114,6 +135,8 @@ All config via `.env`. See [`.env.example`](.env.example) or the [Configuration 
 | `GIT_USER_EMAIL` | | `nuntia@localhost` |
 | `MAX_UPLOAD_SIZE_MB` | | `50` |
 
+---
+
 ## Architecture
 
 ```
@@ -134,6 +157,8 @@ src/
 
 Full architecture diagrams and data flow in the [Architecture docs](https://wngfra.github.io/Nuntia/guide/architecture).
 
+---
+
 ## Documentation
 
 Comprehensive docs at **[wngfra.github.io/Nuntia](https://wngfra.github.io/Nuntia/)**:
@@ -146,6 +171,8 @@ Comprehensive docs at **[wngfra.github.io/Nuntia](https://wngfra.github.io/Nunti
 - **[Contributing](https://wngfra.github.io/Nuntia/contributing/development)** &mdash; dev setup, adding transports, adding commands, testing
 
 Docs auto-deploy to GitHub Pages on pushes to `main` that change `docs/`.
+
+---
 
 ## Scripts
 
@@ -161,6 +188,8 @@ Docs auto-deploy to GitHub Pages on pushes to `main` that change `docs/`.
 | `npm run docs:build` | Build docs site |
 | `npm run docs:preview` | Preview built docs |
 
+---
+
 ## Security
 
 - API keys &rarr; AES-256-GCM encrypted, never logged or echoed
@@ -172,20 +201,30 @@ Docs auto-deploy to GitHub Pages on pushes to `main` that change `docs/`.
 
 See the full [Security guide](https://wngfra.github.io/Nuntia/guide/security).
 
+---
+
 ## Tech Stack
 
-| | Technology | Purpose |
-|---|-----------|---------|
-| | Node.js 20+ / TypeScript 5+ | Runtime (ESM) |
-| | grammY | Telegram Bot API |
-| | @whiskeysockets/baileys | WhatsApp Web |
-| | simple-git | Programmatic Git |
-| | Node crypto (AES-256-GCM) | API key encryption |
-| | pino | Structured JSON logging |
-| | vitest | Unit + integration tests |
-| | VitePress | Documentation site |
-| | Docker | Containerized deployment |
+| Technology | Purpose |
+|-----------|---------|
+| Node.js 20+ / TypeScript 5+ | Runtime (ESM) |
+| grammY | Telegram Bot API |
+| @whiskeysockets/baileys | WhatsApp Web |
+| simple-git | Programmatic Git |
+| Node crypto (AES-256-GCM) | API key encryption |
+| pino | Structured JSON logging |
+| vitest | Unit + integration tests |
+| VitePress | Documentation site |
+| Docker | Containerized deployment |
 
-## License
+---
+
+<div align="center">
+
+<br>
 
 [Apache 2.0](LICENSE)
+
+<br>
+
+</div>

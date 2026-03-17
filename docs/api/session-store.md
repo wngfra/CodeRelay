@@ -1,3 +1,8 @@
+---
+title: Session Store API
+description: API reference for SessionData and SessionStore providing JSON-backed persistent chat session state with crash recovery.
+---
+
 # Session Store
 
 **File:** `src/session/store.ts`

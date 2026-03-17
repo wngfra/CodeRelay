@@ -1,3 +1,8 @@
+---
+title: Transport Types API
+description: API reference for Platform, IncomingMessage, TransportAdapter, and other platform-agnostic interfaces for Telegram and WhatsApp adapters.
+---
+
 # Transport Types
 
 **File:** `src/transport/types.ts`

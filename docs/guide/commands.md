@@ -1,3 +1,8 @@
+---
+title: Bot Commands
+description: Reference for all 19 Nuntia bot commands covering project management, model selection, API keys, session control, Git operations, and file management.
+---
+
 # Bot Commands
 
 All commands work on both Telegram and WhatsApp unless noted otherwise.

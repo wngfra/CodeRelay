@@ -1,3 +1,8 @@
+---
+title: Formatters API
+description: API reference for Telegram MarkdownV2 and WhatsApp plain-text formatting functions including stage transitions, code blocks, diffs, and task summaries.
+---
+
 # Formatters
 
 **Files:** `src/formatter/telegram.ts`, `src/formatter/whatsapp.ts`

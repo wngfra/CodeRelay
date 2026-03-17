@@ -1,3 +1,8 @@
+---
+title: WhatsApp Adapter API
+description: API reference for WhatsAppAdapter using Baileys with QR code authentication, auto-reconnection, media downloads, and group admin checks.
+---
+
 # WhatsApp Adapter
 
 **File:** `src/transport/whatsapp.ts`

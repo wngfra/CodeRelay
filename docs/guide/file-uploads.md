@@ -1,3 +1,8 @@
+---
+title: File Uploads
+description: Upload images, documents, and code files to Nuntia via Telegram or WhatsApp for context-aware AI coding with deduplication and size limits.
+---
+
 # File Uploads
 
 Nuntia supports receiving file uploads from both Telegram and WhatsApp. Uploaded files are saved to the active project directory and can be referenced in coding prompts.

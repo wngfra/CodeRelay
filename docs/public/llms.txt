@@ -1,0 +1,33 @@
+# Nuntia
+
+> Nuntia is a TypeScript application that connects Telegram and WhatsApp to OpenCode's multi-agent AI coding system. Users send natural language coding requests via chat and receive real-time streaming output, automatic Git branching, and TDD workflow enforcement.
+
+## Key Features
+
+- Dual transport: Telegram (grammY) and WhatsApp (Baileys) adapters
+- Real-time streaming of agent stage transitions and code output to chat
+- TDD workflow enforcement: SPEC, TEST, IMPLEMENT, README, CHANGELOG
+- Auto Git branching: completed tasks auto-commit to descriptive branches
+- AES-256-GCM encrypted API key storage with auto-delete on Telegram
+- Multi-user group support with admin-restricted commands and task queuing
+- File uploads: images, documents, code files for context-aware coding
+- 19 bot commands for projects, models, Git, files, and session management
+
+## Documentation
+
+- [Getting Started](https://wngfra.github.io/Nuntia/guide/getting-started.html): Install, configure, and run your first AI-assisted coding task
+- [Configuration](https://wngfra.github.io/Nuntia/guide/configuration.html): All environment variables with defaults
+- [Bot Commands](https://wngfra.github.io/Nuntia/guide/commands.html): Complete command reference (19 commands)
+- [File Uploads](https://wngfra.github.io/Nuntia/guide/file-uploads.html): Upload support with deduplication and size limits
+- [Git Workflow](https://wngfra.github.io/Nuntia/guide/git-workflow.html): Auto-branching, commits, and push workflow
+- [Architecture](https://wngfra.github.io/Nuntia/guide/architecture.html): System diagram, module responsibilities, data flow
+- [Security](https://wngfra.github.io/Nuntia/guide/security.html): Encryption, access control, process isolation
+- [API Reference](https://wngfra.github.io/Nuntia/api/): Complete reference for all exported classes, functions, and types
+- [Development Setup](https://wngfra.github.io/Nuntia/contributing/development.html): Dev environment, project layout, tech stack
+- [Adding a Transport](https://wngfra.github.io/Nuntia/contributing/adding-transport.html): How to add a new messaging platform adapter
+- [Adding Commands](https://wngfra.github.io/Nuntia/contributing/adding-commands.html): How to add new bot commands
+- [Testing](https://wngfra.github.io/Nuntia/contributing/testing.html): Vitest test suite with 79 tests
+
+## Optional
+
+- [Full Documentation for LLMs](https://wngfra.github.io/Nuntia/llms-full.txt): Complete documentation content in a single file for LLM consumption

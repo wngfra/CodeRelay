@@ -1,5 +1,7 @@
 ---
 layout: home
+title: Nuntia - Chat-to-Code Pipeline for Telegram and WhatsApp
+description: Connect Telegram and WhatsApp to OpenCode multi-agent AI coding. Send natural language requests via chat, get real-time streaming code output, automatic Git branching, and TDD workflow enforcement.
 
 hero:
   name: Nuntia

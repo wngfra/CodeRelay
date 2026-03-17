@@ -1,3 +1,8 @@
+---
+title: Testing
+description: Testing guide for Nuntia using Vitest with 79 tests across 6 files, including patterns for temp directories, pure functions, and environment setup.
+---
+
 # Testing
 
 Nuntia uses [Vitest](https://vitest.dev/) for unit and integration tests.

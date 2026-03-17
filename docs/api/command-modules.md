@@ -1,3 +1,8 @@
+---
+title: Command Modules API
+description: API reference for ProjectCommands, ModelCommands, SessionCommands, GitCommands, and FileCommands handler classes.
+---
+
 # Command Modules
 
 Individual command handler classes. Each module groups related commands and is instantiated by the [`CommandRouter`](/api/command-router).

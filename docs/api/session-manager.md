@@ -1,3 +1,8 @@
+---
+title: Session Manager API
+description: API reference for SessionManager handling chat-to-project directory mapping, task queue management, and whitelist authorization.
+---
+
 # Session Manager
 
 **File:** `src/session/manager.ts`

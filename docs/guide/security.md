@@ -1,3 +1,8 @@
+---
+title: Security
+description: Nuntia security model including AES-256-GCM API key encryption, chat ID whitelisting, file path traversal prevention, and Docker process isolation.
+---
+
 # Security
 
 ## API Key Protection

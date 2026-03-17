@@ -1,3 +1,8 @@
+---
+title: Configuration
+description: Complete reference for all Nuntia environment variables including transport, workspace, model, Git, file upload, and logging settings.
+---
+
 # Configuration
 
 All configuration is via environment variables loaded from a `.env` file.

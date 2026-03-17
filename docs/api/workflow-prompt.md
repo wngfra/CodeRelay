@@ -1,3 +1,8 @@
+---
+title: Workflow Prompt API
+description: API reference for WORKFLOW_SYSTEM_PROMPT and buildPrompt() that enforce the spec-first TDD workflow on every OpenCode task.
+---
+
 # Workflow Prompt
 
 **File:** `src/runner/workflow-prompt.ts`

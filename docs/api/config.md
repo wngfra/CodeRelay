@@ -1,3 +1,8 @@
+---
+title: Config API
+description: API reference for AppConfig interface, loadConfig(), and resetConfig() — environment variable loading with caching from src/config.ts.
+---
+
 # Config
 
 **File:** `src/config.ts`

@@ -1,3 +1,8 @@
+---
+title: Command Router API
+description: API reference for CommandRouter and CommandContext dispatching bot commands to handler modules with admin permission checks.
+---
+
 # Command Router
 
 **File:** `src/commands/index.ts`

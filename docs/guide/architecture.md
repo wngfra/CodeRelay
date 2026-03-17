@@ -1,3 +1,8 @@
+---
+title: Architecture
+description: Nuntia system architecture overview covering the transport layer, session management, OpenCode task pipeline, formatters, and concurrency model.
+---
+
 # Architecture
 
 ## System Diagram

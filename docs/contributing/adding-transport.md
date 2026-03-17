@@ -1,3 +1,8 @@
+---
+title: Adding a Transport
+description: Step-by-step guide to implementing a new messaging platform adapter for Nuntia, including TransportAdapter interface, rate limiting, and registration.
+---
+
 # Adding a Transport
 
 This guide walks through adding a new messaging platform adapter (e.g., Discord, Slack, Matrix).

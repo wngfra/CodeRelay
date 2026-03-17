@@ -1,3 +1,8 @@
+---
+title: OpenCode Runner API
+description: API reference for OpenCodeRunner managing CLI subprocess spawning, stdout/stderr streaming, timeout, and task cancellation.
+---
+
 # OpenCode Runner
 
 **File:** `src/runner/opencode.ts`

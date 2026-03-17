@@ -1,3 +1,8 @@
+---
+title: Adding Commands
+description: How to add new bot commands to Nuntia, including handler method patterns, router integration, admin restrictions, and dependency injection.
+---
+
 # Adding Commands
 
 This guide covers adding new bot commands to Nuntia.

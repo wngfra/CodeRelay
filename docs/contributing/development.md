@@ -1,3 +1,8 @@
+---
+title: Development Setup
+description: Development environment setup, project layout, npm scripts, tech stack overview, and module dependency graph for Nuntia contributors.
+---
+
 # Development Setup
 
 ## Clone and Install

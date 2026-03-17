@@ -1,3 +1,8 @@
+---
+title: Git Workflow
+description: How Nuntia automatically manages Git repositories, creates descriptive task branches, commits changes on completion, and pushes to remotes.
+---
+
 # Git Workflow
 
 Nuntia automatically manages Git repositories for each project, creating branches and commits for every completed task.

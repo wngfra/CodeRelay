@@ -1,3 +1,8 @@
+---
+title: Output Parser API
+description: API reference for OutputStreamParser, stripAnsi(), parseLine(), and agent stage detection for OpenCode CLI streaming output.
+---
+
 # Output Parser
 
 **File:** `src/runner/parser.ts`

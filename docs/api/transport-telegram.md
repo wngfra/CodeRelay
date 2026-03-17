@@ -1,3 +1,8 @@
+---
+title: Telegram Adapter API
+description: API reference for TelegramAdapter using grammY with long polling, message editing for live updates, file downloads, and admin checks.
+---
+
 # Telegram Adapter
 
 **File:** `src/transport/telegram.ts`
